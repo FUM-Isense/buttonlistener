@@ -17,9 +17,10 @@ class KeyPressNode(Node):
         try:
             if key.char == 'b':
                 self.publish_keypress(True)
-            elif key.char == 'c':
-                self.publish_keypress(False)
+
         except AttributeError:
+            if "page_down" in str(key):
+                self.publish_keypress(False)
             pass
     
     def publish_keypress(self, value):
